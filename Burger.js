@@ -55,7 +55,6 @@ export default Burger;
 
 
 
-
 import React, { useState } from "react";
 import "./index.css";
 
@@ -112,12 +111,13 @@ export default function Calculator() {
   const resetPage = () => {
     setResult(null);
     setInputs({ ...initialInputvalues });
+    setOperator("+");
   };
 
   return (
     <div className="layout-column align-items-center">
       <div data-testid="total-operations" className="pt-50 total-operations">
-        Total Operations Performed: {operationCount}
+        Total operations performed: {operationCount}
       </div>
       <div className="card">
         <section className="card-text">
@@ -194,18 +194,19 @@ export default function Calculator() {
             >
               Reset
             </button>
-            <div className="layout-row justify-content-center align-items-center result-container">
-              <div
-                data-testid="result"
-                className="result-value ma-0 slide-up-fade-in"
-              >
-                {result && `Result:  ${result}`}
+            {result && (
+              <div className="layout-row justify-content-center align-items-center result-container">
+                <div
+                  data-testid="result"
+                  className="result-value ma-0 slide-up-fade-in"
+                >
+                  Result: {result}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </section>
       </div>
     </div>
   );
 }
-
